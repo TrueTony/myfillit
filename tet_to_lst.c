@@ -29,14 +29,12 @@ void    to_lst(t_tetris **a, t_tetris **b, char *gab, char letter)
     {
         *a = newlist_with_c(gab, letter);
         letter++;
-        //printf("a created\n");
     }
     else
     {
         *b = newlist_with_c(gab, letter);
         letter++;
         ft_lstadd_tet(a, *b);
-        //printf("b- created and linked\n");
     }
 }
 
@@ -45,10 +43,8 @@ void    shift_tet(t_tetris **a, t_tetris **b, char *gab, char letter)
     int x;
     int y;
     int i;
-    //printf("%s\n", gab);
     x = min_of_four(gab[0]-48, gab[2]-48, gab[4]-48, gab[6]-48);
     y = min_of_four(gab[1]-48, gab[3]-48, gab[5]-48, gab[7]-48);
-    //printf("shift x %d, shift y %d\n", x, y);
     i = 0;
     while (i < 8)
     {
@@ -57,7 +53,6 @@ void    shift_tet(t_tetris **a, t_tetris **b, char *gab, char letter)
         gab[i] -= y;
         i++;
     }
-    //printf("%s\n", gab);
     to_lst(a, b, gab, letter);
 }
 
@@ -86,7 +81,6 @@ void    to_gab(t_tetris **a, t_tetris **b, char *str, char letter)
             x++;
         str++;
     }
-    //gab[8] = '\0';
     shift_tet(a, b, gab, letter);
 }
 

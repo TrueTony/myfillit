@@ -27,15 +27,11 @@ int     is_fitt(char **map, t_tetris *tetro, int i, int j)
         && map[tetro->data[4] - 48 + i][tetro->data[5] - 48 + j] == '.' && \
         map[tetro->data[6] - 48 + i][tetro->data[7] - 48 + j] == '.')
     {
-        //printf("is fit\n");
         fitting(map, tetro, i, j);
         return (1);
     }
     else
-    {
-        //printf("lol no\n");
         return (0);
-    }
 }
 
 void     free_cells(char **map, char c)

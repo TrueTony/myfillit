@@ -13,18 +13,6 @@
 #include "fillit.h"
 //#include "ttt.h"
 
-/*
-int     min_map(int n)
-{
-    int size;
-
-    size = 2;
-    while (size * size < n)
-        size++;
-    return (size);
-}
-*/
-
 int     min_map(t_tetris *tetro, int count)
 {
     int     i;

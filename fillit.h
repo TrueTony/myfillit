@@ -17,7 +17,7 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <string.h>
-# include "libft/libft.h"
+//# include "libft/libft.h"
 
 #include <stdio.h>
 
@@ -42,7 +42,12 @@ int     	max_of_four(char a, char b, char c, char d);
 void     	fitting(char **map, t_tetris *tetro, int i, int j);
 int     	is_fitt(char **map, t_tetris *tetro, int i, int j);
 void     	free_cells(char **map, char c);
-int 		rec(char **map, t_tetris *tetro, int i, int j, int x, int edge);
+int     	rec(char **map, t_tetris *tetro, int i, int j, int count);
+int     	comming(char **map, t_tetris *tetro, int i, int j, int count);
 int			count_of_tet(t_tetris *a);
+
+void	*ft_memcpy(void *dst, const void *src, size_t n);
+size_t	ft_strlen(const char *s);
+char	*ft_strnew(size_t size);
 
 #endif
