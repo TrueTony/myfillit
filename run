@@ -1,0 +1,1 @@
+gcc -Wall -Wextra -Werror count_of_tet.c fit.c lists.c map.c rec.c tet_to_lst.c validate_tet.c main4.c libft/libft.a
