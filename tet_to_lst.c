@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   tet_to_lst.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ksenaida <ksenaida@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 17:15:18 by ksenaida          #+#    #+#             */
-/*   Updated: 2019/11/12 11:09:33 by marvin           ###   ########.fr       */
+/*   Updated: 2019/11/12 19:59:11 by ksenaida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "fillit.h"
 
 int     min_of_four(int a, int b, int c, int d)
 {
@@ -27,14 +29,14 @@ void    to_lst(t_tetris **a, t_tetris **b, char *gab, char letter)
     {
         *a = newlist_with_c(gab, letter);
         letter++;
-        printf("a created\n");
+        //printf("a created\n");
     }
     else
     {
         *b = newlist_with_c(gab, letter);
         letter++;
         ft_lstadd_tet(a, *b);
-        printf("b- created and linked\n");
+        //printf("b- created and linked\n");
     }
 }
 
@@ -46,7 +48,7 @@ void    shift_tet(t_tetris **a, t_tetris **b, char *gab, char letter)
     //printf("%s\n", gab);
     x = min_of_four(gab[0]-48, gab[2]-48, gab[4]-48, gab[6]-48);
     y = min_of_four(gab[1]-48, gab[3]-48, gab[5]-48, gab[7]-48);
-    printf("shift x %d, shift y %d\n", x, y);
+    //printf("shift x %d, shift y %d\n", x, y);
     i = 0;
     while (i < 8)
     {

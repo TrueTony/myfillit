@@ -1,8 +1,21 @@
-#include "ttt.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rec.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ksenaida <ksenaida@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/11/12 16:35:57 by ksenaida          #+#    #+#             */
+/*   Updated: 2019/11/12 19:59:42 by ksenaida         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "fillit.h"
+//#include "ttt.h"
 
 int rec(char **map, t_tetris *tetro, int i, int j, int count, int edge)
 {
-    printf("start rec, count=%d\n", count);
+    //printf("start rec, count=%d\n", count);
     int     maxi;
     int     maxj;
     int     comming;
@@ -12,7 +25,7 @@ int rec(char **map, t_tetris *tetro, int i, int j, int count, int edge)
     maxj = max_of_four(tetro->data[1], tetro->data[3], tetro->data[5], tetro->data[7]);
     if (is_fitt(map, tetro, i, j))
     {
-        print_map(map, edge);
+        //print_map(map, edge);
         if (count)
         {
             if (rec(map, tetro->next, 0, 0, count-1, edge))
@@ -34,7 +47,7 @@ int rec(char **map, t_tetris *tetro, int i, int j, int count, int edge)
                 j++;
                 if (is_fitt(map, tetro, i, j))
                 {
-                    print_map(map, edge);
+                    //print_map(map, edge);
                     if (count)
                     {
                         if (rec(map, tetro->next, 0, 0, count-1, edge))
@@ -51,8 +64,8 @@ int rec(char **map, t_tetris *tetro, int i, int j, int count, int edge)
             }
         }
     }
-    printf("this grid is too small for this shit\n");
+    //printf("this map is too small for this shit\n");
     free_cells(map, tetro->c+1);
-    print_map(map, edge);
+    //print_map(map, edge);
     return (0);
 }

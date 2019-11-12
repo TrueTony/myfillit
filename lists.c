@@ -1,4 +1,5 @@
-#include "ttt.h"
+#include "fillit.h"
+//#include "ttt.h"
 
 t_tetris	*newlist_with_c(char *data, char letter)
 {

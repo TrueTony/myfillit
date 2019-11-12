@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ksenaida <ksenaida@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 16:27:13 by ksenaida          #+#    #+#             */
-/*   Updated: 2019/11/12 11:30:16 by marvin           ###   ########.fr       */
+/*   Updated: 2019/11/12 19:18:54 by ksenaida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ttt.h"
+#include "fillit.h"
+//#include "ttt.h"
 
+/*
 int     min_map(int n)
 {
     int size;
@@ -21,6 +23,30 @@ int     min_map(int n)
         size++;
     return (size);
 }
+*/
+
+int     min_map(t_tetris *tetro, int count)
+{
+    int     i;
+    int     size;
+
+    i = 0;
+    size = '2';
+    if (count == 1)
+    {
+        while (i < 8)
+        {
+            if (tetro->data[i] > size)
+                size = tetro->data[i] + 1;
+            i++;
+        }
+    }
+    else
+        while ((size-48) * (size-48) < (count * 4))
+            size++;
+    return (size-48);
+}
+
 
 char    **make_map(int size)
 {

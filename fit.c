@@ -1,4 +1,5 @@
-#include "ttt.h"
+#include "fillit.h"
+//#include "ttt.h"
 
 int     max_of_four(char a, char b, char c, char d)
 {
@@ -21,8 +22,10 @@ void     fitting(char **map, t_tetris *tetro, int i, int j)
 
 int     is_fitt(char **map, t_tetris *tetro, int i, int j)
 {
-    if (map[tetro->data[0] - 48 + i][tetro->data[1] - 48 + j] == '.' && map[tetro->data[2] - 48 + i][tetro->data[3] - 48 + j] == '.' \
-        && map[tetro->data[4] - 48 + i][tetro->data[5] - 48 + j] == '.' && map[tetro->data[6] - 48 + i][tetro->data[7] - 48 + j] == '.')
+    if (map[tetro->data[0] - 48 + i][tetro->data[1] - 48 + j] == '.' && \
+     map[tetro->data[2] - 48 + i][tetro->data[3] - 48 + j] == '.' \
+        && map[tetro->data[4] - 48 + i][tetro->data[5] - 48 + j] == '.' && \
+        map[tetro->data[6] - 48 + i][tetro->data[7] - 48 + j] == '.')
     {
         //printf("is fit\n");
         fitting(map, tetro, i, j);

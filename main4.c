@@ -6,7 +6,7 @@
 /*   By: ksenaida <ksenaida@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 15:15:14 by ksenaida          #+#    #+#             */
-/*   Updated: 2019/11/08 19:08:39 by ksenaida         ###   ########.fr       */
+/*   Updated: 2019/11/12 19:59:37 by ksenaida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,11 @@ int		main(int argc, char **argv)
 	t_tetris	*a;
     t_tetris	*b;
 	int 		i;
-	//int			size;
+	int			count;
+	int			edge;
 	char		str[21];
+	char		**map;
+	int			min_map_size;
 
 	a = NULL;
 	b = NULL;
@@ -50,10 +53,31 @@ int		main(int argc, char **argv)
 	close(fd);
 
 	fd = open(argv[1], O_RDONLY);
-    if (tet_to_lst(fd, &a, &b))
+    if (read_tet(fd, &a, &b))
         return (0);
     close(fd);
 
+	count = count_of_tet(a);
+	min_map_size = min_map(a, count);
+	map = make_map(min_map_size);
+	edge = ft_strlen(map[0]);
+	//printf("min map is %d\n", edge);
+	/*
+	if (rec(map, a, 0, 0, count-1, edge))
+		printf("succes!\n");
+	else
+		printf("smt wrong\n");
+	*/
+	while (!(rec(map, a, 0, 0, count-1, edge)))
+	{
+		free(map);
+		min_map_size++;
+		map = make_map(min_map_size);
+		edge = ft_strlen(map[0]);
+	}
+	//printf("\n");
+	print_map(map, edge);
+/*
 	while (a)
     {
         i = 0;
@@ -66,7 +90,7 @@ int		main(int argc, char **argv)
         a = a->next;
         printf("\n");
     }
-	printf("succes!");
+*/
 
 	return (0);
 }
