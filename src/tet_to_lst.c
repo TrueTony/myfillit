@@ -1,0 +1,87 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   tet_to_lst.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ksenaida <ksenaida@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/11/08 17:15:18 by ksenaida          #+#    #+#             */
+/*   Updated: 2019/11/13 19:16:14 by ksenaida         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "fillit.h"
+
+int			min_of_four(int a, int b, int c, int d)
+{
+	if (a <= b && a <= c && a <= d)
+		return (a);
+	if (b <= a && b <= c && b <= d)
+		return (b);
+	if (c <= a && c <= b && c <= d)
+		return (c);
+	return (d);
+}
+
+void		shift_tet(t_tetris **a, t_tetris **b, char *gab, char letter)
+{
+	int x;
+	int y;
+	int i;
+
+	x = min_of_four(gab[0] - 48, gab[2] - 48, gab[4] - 48, gab[6] - 48);
+	y = min_of_four(gab[1] - 48, gab[3] - 48, gab[5] - 48, gab[7] - 48);
+	i = 0;
+	while (i < 8)
+	{
+		gab[i] -= x;
+		i++;
+		gab[i] -= y;
+		i++;
+	}
+	to_lst(a, b, gab, letter);
+}
+
+void		to_gab(t_tetris **a, t_tetris **b, char *str, char letter)
+{
+	char	x;
+	char	y;
+	int		i;
+	char	gab[8];
+
+	i = 0;
+	x = '0';
+	y = '0';
+	while (*str)
+	{
+		if (*str == '\n')
+		{
+			x = '0';
+			y++;
+		}
+		else if (*str == '#')
+		{
+			gab[i++] = y;
+			gab[i++] = x++;
+		}
+		else
+			x++;
+		str++;
+	}
+	shift_tet(a, b, gab, letter);
+}
+
+int			read_tet(int fd, t_tetris **a, t_tetris **b)
+{
+	char str[20];
+	char letter;
+
+	letter = 'A';
+	while ((read(fd, str, 21)))
+	{
+		str[19] = '\0';
+		to_gab(a, b, str, letter);
+		letter++;
+	}
+	return (0);
+}
