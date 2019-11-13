@@ -6,7 +6,7 @@
 /*   By: ksenaida <ksenaida@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 15:16:29 by ksenaida          #+#    #+#             */
-/*   Updated: 2019/11/13 17:40:42 by ksenaida         ###   ########.fr       */
+/*   Updated: 2019/11/13 19:25:39 by ksenaida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int					checks(char *str, int count);
 int					min_map(t_tetris *tetro, int count);
 char				**make_map(int size);
 void				print_map(char **map, int count);
-t_tetris			*newlist_with_c(char *data, char letter);
+t_tetris			*newlist_with_tet(char *data, char letter);
 void				ft_lstadd_tet(t_tetris **alst, t_tetris *new);
 void				to_lst(t_tetris **a, t_tetris **b, char *gab, char letter);
 int					min_of_four(int a, int b, int c, int d);

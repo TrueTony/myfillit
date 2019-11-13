@@ -6,13 +6,13 @@
 /*   By: ksenaida <ksenaida@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 17:46:12 by ksenaida          #+#    #+#             */
-/*   Updated: 2019/11/13 17:47:16 by ksenaida         ###   ########.fr       */
+/*   Updated: 2019/11/13 19:27:50 by ksenaida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-t_tetris	*newlist_with_c(char *data, char letter)
+t_tetris	*newlist_with_tet(char *data, char letter)
 {
 	t_tetris	*list;
 
@@ -53,12 +53,12 @@ void		to_lst(t_tetris **a, t_tetris **b, char *gab, char letter)
 {
 	if (letter == 'A')
 	{
-		*a = newlist_with_c(gab, letter);
+		*a = newlist_with_tet(gab, letter);
 		letter++;
 	}
 	else
 	{
-		*b = newlist_with_c(gab, letter);
+		*b = newlist_with_tet(gab, letter);
 		letter++;
 		ft_lstadd_tet(a, *b);
 	}
