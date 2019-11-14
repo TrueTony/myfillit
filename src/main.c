@@ -6,7 +6,7 @@
 /*   By: ksenaida <ksenaida@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 15:15:14 by ksenaida          #+#    #+#             */
-/*   Updated: 2019/11/13 17:11:57 by ksenaida         ###   ########.fr       */
+/*   Updated: 2019/11/14 20:19:22 by ksenaida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,36 @@ int     solving(t_tetris *a)
     return (0);
 }
 
+int		recread(fd)
+{
+	int		size;
+	char	strbuf[21];
+
+	while((size = read(fd, strbuf, 21)))
+	{
+		if (strbuf[20] == '\n')
+		{
+			if ((size = read(fd, strbuf, 21)) != 21)
+			{
+				printf("recread error\n");
+				return (1);
+			}
+			else
+				recread(fd);
+		}
+	}
+	return (0);
+}
+
 int		read_functions(char *str, t_tetris **a, t_tetris **b)
 {
 	int		fd;
 	int		size;
 	char	strbuf[21];
+
+	fd = open(str, O_RDONLY);
+	recread(fd);
+	close (fd);
 
 	fd = open(str, O_RDONLY);
 	while((size = read(fd, strbuf, 21)))

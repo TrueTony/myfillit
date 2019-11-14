@@ -6,7 +6,7 @@
 /*   By: ksenaida <ksenaida@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 15:16:29 by ksenaida          #+#    #+#             */
-/*   Updated: 2019/11/13 19:25:39 by ksenaida         ###   ########.fr       */
+/*   Updated: 2019/11/14 18:19:25 by ksenaida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <string.h>
-# include "libft/libft.h"
+# include "../libft/libft.h"
 
 typedef	struct		s_tetris
 {
