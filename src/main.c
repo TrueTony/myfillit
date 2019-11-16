@@ -6,7 +6,7 @@
 /*   By: ksenaida <ksenaida@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 15:15:14 by ksenaida          #+#    #+#             */
-/*   Updated: 2019/11/16 16:47:11 by ksenaida         ###   ########.fr       */
+/*   Updated: 2019/11/16 19:58:52 by ksenaida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,36 +35,29 @@ int     solving(t_tetris *a)
     return (0);
 }
 
-int		recread(int fd)
+int        recread(int fd)
 {
-	int		size;
-	char	strbuf[20];
+    int        i;
+    char    strbuf[21];
+    unsigned	int        size;
+    i = 20;
+    size = read(fd, strbuf, 21);
+	strbuf[size] = '\0';
 
-	size = read(fd, strbuf, 20);
-	//printf("=%c\n", strbuf[0]);
-	//printf("%zu\n", ft_strlen(strbuf));
-	//printf("%d\n", size);
-	//printf("%s\n", strbuf);
-	if (size == 19)
-	{
-		if ((size = read(fd, strbuf, 1)) == 1)
-		{
-			//printf("smth wrong\n");
-			return(1);
-		}
-	}
-	else
-	{
-		size = read(fd, strbuf, 1);
-		if (strbuf[0] != '\n')
-		{
-			//printf("smth another wrong\n");
-			return (1);
-		}
-		if (recread(fd))
-			return (1);
-	}
-	return (0);
+    //printf("=%c\n", strbuf[0]);
+    //printf("%zu\n", ft_strlen(strbuf));
+    //printf("%d\n", size);
+    //printf("%zu\n", ft_strlen(strbuf));
+
+	if (ft_strlen(strbuf) == 21)
+        if (!recread(fd))
+			return (0);
+	if (ft_strlen(strbuf) == 20)
+		return (0);
+	if (strbuf[i] != '\n')
+		return (1);
+	return (1);
+
 }
 
 int		read_functions(char *str, t_tetris **a, t_tetris **b)

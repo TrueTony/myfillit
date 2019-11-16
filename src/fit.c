@@ -6,7 +6,7 @@
 /*   By: ksenaida <ksenaida@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 16:15:30 by ksenaida          #+#    #+#             */
-/*   Updated: 2019/11/16 18:20:46 by ksenaida         ###   ########.fr       */
+/*   Updated: 2019/11/16 20:05:12 by ksenaida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,10 @@ void	fitting(char **map, t_tetris *tetro, int i, int j)
 
 int		is_fitt(char **map, t_tetris *tetro, int i, int j)
 {
-	int edge = ft_strlen(map[0]);
+	//int edge = ft_strlen(map[0]);
 	//printf("%d %d %d\n", edge, i, j);
 	//printf ("%d %d\n", tetro->data[6] - 48 + i, tetro->data[7] - 48 + j);
+	/*
 	if (tetro->data[0] - 48 + i > edge - 1 || \
 		tetro->data[1] - 48 + j > edge - 1|| \
 		tetro->data[2] - 48 + i > edge -1 ||
@@ -45,6 +46,7 @@ int		is_fitt(char **map, t_tetris *tetro, int i, int j)
 		tetro->data[6] - 48 + i > edge -1 ||
 		tetro->data[7] - 48 + j > edge - 1)
 		return (0);
+	*/
 	if (map[tetro->data[0] - 48 + i][tetro->data[1] - 48 + j] == '.' && \
 		map[tetro->data[2] - 48 + i][tetro->data[3] - 48 + j] == '.' && \
 		map[tetro->data[4] - 48 + i][tetro->data[5] - 48 + j] == '.' && \
