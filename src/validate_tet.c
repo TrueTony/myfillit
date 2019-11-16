@@ -6,7 +6,7 @@
 /*   By: ksenaida <ksenaida@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 16:34:01 by ksenaida          #+#    #+#             */
-/*   Updated: 2019/11/14 20:16:35 by ksenaida         ###   ########.fr       */
+/*   Updated: 2019/11/16 16:47:24 by ksenaida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,17 +49,29 @@ int		checks(char *str, int count)
 		if (i % 5 < 4)
 		{
 			if (!(str[i] == '#' || str[i] == '.'))
+			{
+				//printf("first\n");
 				return (1);
+			}
 			if (str[i] == '#' && ++blocs > 4)
 				return (1);
 		}
-		else if (str[i] != '\n')
+		else if (str[i] != '\n' && count == 20)
+		{
+			//printf("third\n");
 			return (1);
+		}
 		i++;
 	}
 	if (str[20] != '\n' && count == 21)
+	{
+		//printf("str[20] != '\\n' && count == 21 error\n");
 		return (1);
+	}
 	if (!connect_check(str))
+	{
+		//printf("connect_check\n");
 		return (1);
+	}
 	return (0);
 }

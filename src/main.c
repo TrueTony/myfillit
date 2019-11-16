@@ -6,7 +6,7 @@
 /*   By: ksenaida <ksenaida@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 15:15:14 by ksenaida          #+#    #+#             */
-/*   Updated: 2019/11/14 20:19:22 by ksenaida         ###   ########.fr       */
+/*   Updated: 2019/11/16 16:47:11 by ksenaida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,23 +35,34 @@ int     solving(t_tetris *a)
     return (0);
 }
 
-int		recread(fd)
+int		recread(int fd)
 {
 	int		size;
-	char	strbuf[21];
+	char	strbuf[20];
 
-	while((size = read(fd, strbuf, 21)))
+	size = read(fd, strbuf, 20);
+	//printf("=%c\n", strbuf[0]);
+	//printf("%zu\n", ft_strlen(strbuf));
+	//printf("%d\n", size);
+	//printf("%s\n", strbuf);
+	if (size == 19)
 	{
-		if (strbuf[20] == '\n')
+		if ((size = read(fd, strbuf, 1)) == 1)
 		{
-			if ((size = read(fd, strbuf, 21)) != 21)
-			{
-				printf("recread error\n");
-				return (1);
-			}
-			else
-				recread(fd);
+			//printf("smth wrong\n");
+			return(1);
 		}
+	}
+	else
+	{
+		size = read(fd, strbuf, 1);
+		if (strbuf[0] != '\n')
+		{
+			//printf("smth another wrong\n");
+			return (1);
+		}
+		if (recread(fd))
+			return (1);
 	}
 	return (0);
 }
@@ -63,14 +74,19 @@ int		read_functions(char *str, t_tetris **a, t_tetris **b)
 	char	strbuf[21];
 
 	fd = open(str, O_RDONLY);
-	recread(fd);
+	if	(recread(fd))
+		return (1);
 	close (fd);
+	//printf("recread ok\n");
 
 	fd = open(str, O_RDONLY);
 	while((size = read(fd, strbuf, 21)))
 	{
 		if (checks(strbuf, size))
+		{
+			//printf("checks error!\n");
 			return (1);
+		}
 	}
 	close(fd);
 	fd = open(str, O_RDONLY);
@@ -87,11 +103,12 @@ int		main(int argc, char **argv)
 
 	if (argc != 2)
 	{
-		ft_putstr("usage\n");
+		ft_putstr("usage: fillit input_file\n");
 		return (0);
 	}
 	if (read_functions(argv[1], &a, &b))
 	{
+		//printf("read_functions error\n");
 		ft_putstr("error\n");
 		return (0);
 	}
