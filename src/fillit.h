@@ -6,7 +6,7 @@
 /*   By: ksenaida <ksenaida@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 15:16:29 by ksenaida          #+#    #+#             */
-/*   Updated: 2019/11/14 18:36:11 by ksenaida         ###   ########.fr       */
+/*   Updated: 2019/11/17 14:25:44 by ksenaida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@
 # include <string.h>
 # include "../libft/libft.h"
 
-# include <stdio.h>
-
 typedef	struct		s_tetris
 {
 	char			*data;
@@ -30,7 +28,7 @@ typedef	struct		s_tetris
 
 int					connect_check(char *str);
 int					checks(char *str, int count);
-int					min_map(t_tetris *tetro, int count);
+int					min_map(int count);
 char				**make_map(int size);
 void				print_map(char **map, int count);
 t_tetris			*newlist_with_tet(char *data, char letter);
