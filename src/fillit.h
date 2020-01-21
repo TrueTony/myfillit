@@ -6,7 +6,7 @@
 /*   By: ksenaida <ksenaida@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 15:16:29 by ksenaida          #+#    #+#             */
-/*   Updated: 2019/11/17 14:25:44 by ksenaida         ###   ########.fr       */
+/*   Updated: 2019/12/07 19:53:46 by ksenaida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,7 @@ void				free_cells(char **map, char c);
 int					rec(char **ma, t_tetris *t, int i, int j);
 int					comming(char **ma, t_tetris *t, int i, int j);
 int					count_of_tet(t_tetris *a);
+void				free_map(char **m, int e);
+void				ft_lstdelnew(t_tetris **alst);
 
 #endif

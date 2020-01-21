@@ -6,7 +6,7 @@
 /*   By: ksenaida <ksenaida@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 17:46:12 by ksenaida          #+#    #+#             */
-/*   Updated: 2019/11/16 18:44:41 by ksenaida         ###   ########.fr       */
+/*   Updated: 2019/12/07 19:57:20 by ksenaida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,20 @@ void		to_lst(t_tetris **a, t_tetris **b, char *gab, char letter)
 		letter++;
 		ft_lstadd_tet(a, *b);
 	}
+}
+
+void		ft_lstdelnew(t_tetris **alst)
+{
+	t_tetris	*nextlist;
+	t_tetris	*currentlist;
+
+	nextlist = *alst;
+	while (nextlist != NULL)
+	{
+		currentlist = nextlist;
+		nextlist = currentlist->next;
+		free(currentlist->data);
+		free(currentlist);
+	}
+	*alst = NULL;
 }

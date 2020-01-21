@@ -6,7 +6,7 @@
 /*   By: ksenaida <ksenaida@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 16:15:30 by ksenaida          #+#    #+#             */
-/*   Updated: 2019/11/17 14:31:20 by ksenaida         ###   ########.fr       */
+/*   Updated: 2019/12/07 19:58:02 by ksenaida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,17 @@ void	free_cells(char **map, char c)
 		}
 		i++;
 	}
+}
+
+void	free_map(char **m, int e)
+{
+	int i;
+
+	i = 0;
+	while (i < e)
+	{
+		free(m[i]);
+		i++;
+	}
+	free(m);
 }

@@ -6,7 +6,7 @@
 /*   By: ksenaida <ksenaida@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 15:15:14 by ksenaida          #+#    #+#             */
-/*   Updated: 2019/11/17 14:37:42 by ksenaida         ###   ########.fr       */
+/*   Updated: 2019/12/07 19:53:58 by ksenaida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ int			solving(t_tetris *a)
 		map = make_map(min_map_size);
 		edge = ft_strlen(map[0]);
 	}
-	free(map);
 	print_map(map, edge);
+	free_map(map, edge);
 	return (0);
 }
 
@@ -113,5 +113,6 @@ int			main(int argc, char **argv)
 		ft_putstr("error\n");
 		return (0);
 	}
+	ft_lstdelnew(&a);
 	return (0);
 }
